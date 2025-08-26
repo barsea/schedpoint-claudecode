@@ -1,0 +1,45 @@
+# 最初に読み込むライブラリを指定（plugins: に変更）
+plugins:
+  - rubocop-rails
+
+AllCops:
+  # 新しく追加されたルールを自動で有効にする
+  NewCops: enable
+  # 除外するディレクトリ
+  Exclude:
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "config/**/*"
+    - "script/**/*"
+    - "bin/*"
+    - "vendor/**/*"
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "storage/**/*"
+    - "frontend/**/*"
+
+# 日本語でのコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# クラスやモジュール定義前の説明書きを不要にする
+Style/Documentation:
+  Enabled: false
+
+# 1行あたりの文字数
+Layout/LineLength:
+  Max: 130
+
+# メソッドの行数
+Metrics/MethodLength:
+  Max: 30
+
+# メソッドの複雑度
+Metrics/AbcSize:
+  Max: 50
+
+# ブロック内の行数（RSpecファイルは除外）
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "Gemfile"
