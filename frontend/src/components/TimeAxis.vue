@@ -30,10 +30,15 @@ const items = ref([
 </script>
 
 <template>
-  <div>
-    <div class="h-16 border-b-2 border-slate-300"></div>
-    <div v-for="(text, index) in items" :key="index" class="relative h-12 pr-2 text-right">
-      <span class="relative text-sm text-gray-500 -top-[13px]">
+  <div class="h-full">
+    <!-- ヘッダー部分 -->
+    <div class="h-16 border-b border-google-gray-200 bg-google-gray-50 flex items-center justify-center">
+      <span class="text-xs text-google-gray-500 font-medium">時間</span>
+    </div>
+    
+    <!-- 時間軸 -->
+    <div v-for="(text, index) in items" :key="index" class="relative h-12 pr-3 text-right flex items-start justify-end border-b border-google-gray-100">
+      <span class="text-xs text-google-gray-500 font-medium -mt-2 bg-white px-1">
         {{ text }}
       </span>    
     </div>

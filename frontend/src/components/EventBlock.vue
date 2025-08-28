@@ -12,11 +12,10 @@ defineProps({
 </script>
 
 <template>
-  <!-- 親から計算された高さが30分未満の場合でも、最低30分の高さを保つようにする。 -->
-  <div class="absolute inset-x-0 bg-blue-200 opacity-75 z-10 p-2 rounded flex items-center min-h-6">
-    <div class="flex items-center justify-between w-full">
-      <p class="font-bold text-sm truncate">{{ categoryName }}</p>
-      <p class="text-xs flex-shrink-0 ml-2">{{ time }}</p>
+  <div class="absolute inset-x-0 bg-google-blue-100 hover:bg-google-blue-200 border-l-4 border-google-blue-500 z-10 p-3 rounded-google shadow-calendar-event hover:shadow-google-hover transition-all duration-200 cursor-pointer min-h-6 mx-1">
+    <div class="flex flex-col h-full justify-center">
+      <p class="font-medium text-sm text-google-gray-800 truncate leading-tight">{{ categoryName }}</p>
+      <p class="text-xs text-google-gray-600 mt-1 truncate">{{ time }}</p>
     </div>
   </div>
 </template>

@@ -54,131 +54,114 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <div class="container mx-auto flex items-center justify-between h-full px-4 py-3">
+  <div class="flex items-center justify-between h-full px-6 py-3 font-google">
     <div class="flex items-center">
-      <div class="text-2xl mr-8 text-gray-800">{{ planStore.formattedCurrentDate }}</div>
+      <div class="text-2xl font-medium mr-8 text-google-gray-800">{{ planStore.formattedCurrentDate }}</div>
       <button
         @click="planStore.resetToToday()"
-        class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold text-xl py-2 px-4 rounded-lg mr-6"
+        class="bg-google-blue-500 hover:bg-google-blue-600 text-white font-medium text-sm py-2 px-4 rounded-google mr-4 shadow-sm transition-colors"
       >
         今日
       </button>
-      <button
-        @click="planStore.changeDate(-1)"
-        class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg mr-4"
-      >
-        前日
-      </button>
-      <button
-        @click="planStore.changeDate(1)"
-        class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg"
-      >
-        翌日
-      </button>
+      <div class="flex items-center bg-google-gray-100 rounded-google overflow-hidden mr-4">
+        <button
+          @click="planStore.changeDate(-1)"
+          class="hover:bg-google-gray-200 text-google-gray-700 font-medium py-2 px-3 transition-colors"
+        >
+          ←
+        </button>
+        <div class="w-px h-8 bg-google-gray-300"></div>
+        <button
+          @click="planStore.changeDate(1)"
+          class="hover:bg-google-gray-200 text-google-gray-700 font-medium py-2 px-3 transition-colors"
+        >
+          →
+        </button>
+      </div>
     </div>
 
     <div class="flex items-center space-x-4">
       <!-- 未ログイン時の表示 -->
-      <div v-if="!authStore.isLoggedIn" class="space-x-4">
+      <div v-if="!authStore.isLoggedIn" class="space-x-3">
         <router-link
           to="/login"
-          class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700"
+          class="px-4 py-2 text-sm font-medium text-google-gray-700 rounded-google hover:bg-google-gray-100 transition-colors"
         >
           ログイン
         </router-link>
         <router-link
           to="/signup"
-          class="bg-blue-500 hover:bg-blue-700 px-4 py-2 text-sm font-medium text-white rounded-md"
+          class="bg-google-blue-500 hover:bg-google-blue-600 px-4 py-2 text-sm font-medium text-white rounded-google shadow-sm transition-colors"
         >
           新規登録
         </router-link>
       </div>
       <!-- ログイン時の表示 -->
       <div v-else class="flex items-center space-x-4">
-        <!-- ユーザー名とプルダウンメニュー -->
-        <div class="relative" ref="userDropdown">
-          <!-- @clickでプルダウンの表示/非表示を切り替え -->
-          <button
-            @click.prevent="toggleUserDropdown"
-            class="flex items-center space-x-2 focus:outline-none"
-          >
-            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">{{
-              authStore.userName
-            }}</span>
-            <svg
-              class="w-4 h-4 text-gray-600 dark:text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
-            </svg>
-          </button>
-          <!-- v-ifでプルダウンメニューの表示を制御 -->
-          <div
-            v-if="isUserDropdownOpen"
-            class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-md shadow-lg py-1 z-10"
-          >
-            <a
-              href="#"
-              @click.prevent="handleLogout"
-              class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600"
-            >
-              ログアウト
-            </a>
-          </div>
-        </div>
-
         <!-- 「+ 作成」ボタンをドロップダウンに変更 -->
         <div class="relative" ref="createDropdown">
-          <!-- ボタン: クリックで isCreateDropdownOpen の状態を切り替える -->
           <button
             @click.prevent="toggleCreateDropdown"
-            class="flex items-center bg-blue-500 hover:bg-blue-700 px-4 py-2 text-sm font-medium text-white rounded-md"
+            class="flex items-center bg-google-blue-500 hover:bg-google-blue-600 px-4 py-2 text-sm font-medium text-white rounded-google shadow-sm transition-colors"
           >
-            <span>+ 作成</span>
-            <svg
-              class="w-4 h-4 ml-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            <span>作成</span>
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
-          <!-- ドロップダウンメニュー: isCreateDropdownOpen が true の時だけ表示 -->
           <div
             v-if="isCreateDropdownOpen"
-            class="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-10"
+            class="absolute right-0 mt-2 w-36 bg-white rounded-google shadow-google py-2 z-20"
           >
-            <!-- 予定作成ページへのリンク -->
             <RouterLink
               to="/events/new/plan"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              class="block px-4 py-2 text-sm text-google-gray-700 hover:bg-google-gray-100 transition-colors"
               @click="isCreateDropdownOpen = false"
             >
               予定
             </RouterLink>
-            <!-- 実績作成ページへのリンク -->
             <RouterLink
               to="/events/new/actual"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              class="block px-4 py-2 text-sm text-google-gray-700 hover:bg-google-gray-100 transition-colors"
               @click="isCreateDropdownOpen = false"
             >
               実績
             </RouterLink>
+          </div>
+        </div>
+
+        <!-- ユーザー名とプルダウンメニュー -->
+        <div class="relative" ref="userDropdown">
+          <button
+            @click.prevent="toggleUserDropdown"
+            class="flex items-center space-x-2 p-2 rounded-full hover:bg-google-gray-100 focus:outline-none transition-colors"
+          >
+            <div class="w-8 h-8 bg-google-blue-500 rounded-full flex items-center justify-center">
+              <span class="text-white text-sm font-medium">
+                {{ authStore.userName?.charAt(0).toUpperCase() }}
+              </span>
+            </div>
+            <svg class="w-4 h-4 text-google-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            v-if="isUserDropdownOpen"
+            class="absolute right-0 mt-2 w-48 bg-white rounded-google shadow-google py-2 z-20"
+          >
+            <div class="px-4 py-2 text-sm text-google-gray-900 font-medium border-b border-google-gray-200">
+              {{ authStore.userName }}
+            </div>
+            <a
+              href="#"
+              @click.prevent="handleLogout"
+              class="block px-4 py-2 text-sm text-google-gray-700 hover:bg-google-gray-100 transition-colors"
+            >
+              ログアウト
+            </a>
           </div>
         </div>
       </div>

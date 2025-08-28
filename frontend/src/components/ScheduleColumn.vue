@@ -93,20 +93,26 @@ const handleEventClick = (event) => {
 </script>
 
 <template>
-  <div class="relative">
-    <h2 class="flex items-center justify-center h-16 text-3xl border-b-2 border-slate-300">
-      {{ title }}
-    </h2>
-    <div v-for="n in 24" :key="n" class="h-12 pr-2 border-b border-gray-200"></div>
-    <!-- EventBlockがクリックされたらhandleEventClickを呼び出す -->
-    <EventBlock
-      v-for="event in processedEvents"
-      :key="event.id"
-      :category-name="event.category?.name || event.memo"
-      :time="`${formatTime(event.startTime)} - ${formatTime(event.endTime)}`"
-      :style="getEventStyle(event)"
-      @click="handleEventClick(event)"
-      class="cursor-pointer"
-    />
+  <div class="relative h-full">
+    <!-- カラムヘッダー -->
+    <div class="flex items-center justify-center h-16 bg-google-gray-50 border-b border-google-gray-200 sticky top-0 z-10">
+      <h2 class="text-xl font-medium text-google-gray-800">{{ title }}</h2>
+    </div>
+    
+    <!-- 時間グリッド -->
+    <div class="relative">
+      <div v-for="n in 24" :key="n" class="h-12 pr-3 border-b border-google-gray-100 hover:bg-google-gray-50 transition-colors"></div>
+      
+      <!-- イベントブロック -->
+      <EventBlock
+        v-for="event in processedEvents"
+        :key="event.id"
+        :category-name="event.category?.name || event.memo"
+        :time="`${formatTime(event.startTime)} - ${formatTime(event.endTime)}`"
+        :style="getEventStyle(event)"
+        @click="handleEventClick(event)"
+        class="cursor-pointer"
+      />
+    </div>
   </div>
 </template>

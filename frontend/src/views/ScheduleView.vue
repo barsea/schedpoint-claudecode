@@ -47,29 +47,34 @@ const handleActualClick = (actual) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center h-screen bg-gray-100">
-    <div
-      class="w-full max-w-[1500px] h-[100px] bg-light-gray-blue border-2 border-slate-300 flex-shrink-0"
-    >
+  <div class="flex flex-col h-screen bg-google-gray-100 font-google">
+    <!-- ヘッダー -->
+    <div class="w-full h-[80px] bg-white shadow-google flex-shrink-0">
       <TheHeader />
     </div>
 
-    <div
-      class="relative flex flex-grow w-full max-w-[1500px] border-x-2 border-b-2 border-slate-300 overflow-y-auto"
-    >
-      <div class="w-[100px] min-h-[1216px] flex-grow bg-white">
+    <!-- メインコンテンツ -->
+    <div class="flex flex-grow overflow-hidden">
+      <!-- タイムアクシス -->
+      <div class="w-[100px] bg-white border-r border-google-gray-200 shadow-sm">
         <TimeAxis />
       </div>
-      <div class="w-[700px] min-h-[1216px] flex-grow bg-white border-x-2 border-slate-300">
-        <!-- @plan-clickで子からのイベントを捕捉する -->
-        <ScheduleColumn title="予定" :events="planStore.plans" @plan-click="handlePlanClick" />
-      </div>
-      <div class="w-[700px] min-h-[1216px] flex-grow bg-white">
-        <ScheduleColumn
-          title="実績"
-          :events="actualStore.actuals"
-          @actual-click="handleActualClick"
-        />
+      
+      <!-- カレンダーコンテンツ -->
+      <div class="flex flex-grow">
+        <!-- 予定列 -->
+        <div class="flex-1 bg-white border-r border-google-gray-200">
+          <ScheduleColumn title="予定" :events="planStore.plans" @plan-click="handlePlanClick" />
+        </div>
+        
+        <!-- 実績列 -->
+        <div class="flex-1 bg-white">
+          <ScheduleColumn
+            title="実績"
+            :events="actualStore.actuals"
+            @actual-click="handleActualClick"
+          />
+        </div>
       </div>
     </div>
   </div>
