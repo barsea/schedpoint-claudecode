@@ -37,8 +37,8 @@ const items = ref([
     </div>
     
     <!-- 時間軸 -->
-    <div v-for="(text, index) in items" :key="index" class="relative h-12 pr-3 text-right flex items-start justify-end border-b border-google-gray-100">
-      <span class="text-xs text-google-gray-500 font-medium -mt-2 bg-white px-1">
+    <div v-for="(text, index) in items" :key="index" class="relative h-12 pr-3 text-right border-b border-google-gray-100">
+      <span class="relative text-sm text-google-gray-500 -top-[13px]">
         {{ text }}
       </span>    
     </div>

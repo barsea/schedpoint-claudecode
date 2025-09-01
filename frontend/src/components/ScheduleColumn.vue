@@ -100,19 +100,17 @@ const handleEventClick = (event) => {
     </div>
     
     <!-- 時間グリッド -->
-    <div class="relative">
-      <div v-for="n in 24" :key="n" class="h-12 pr-3 border-b border-google-gray-100 hover:bg-google-gray-50 transition-colors"></div>
-      
-      <!-- イベントブロック -->
-      <EventBlock
-        v-for="event in processedEvents"
-        :key="event.id"
-        :category-name="event.category?.name || event.memo"
-        :time="`${formatTime(event.startTime)} - ${formatTime(event.endTime)}`"
-        :style="getEventStyle(event)"
-        @click="handleEventClick(event)"
-        class="cursor-pointer"
-      />
-    </div>
+    <div v-for="n in 24" :key="n" class="h-12 pr-3 border-b border-google-gray-100 hover:bg-google-gray-50 transition-colors"></div>
+    
+    <!-- イベントブロック -->
+    <EventBlock
+      v-for="event in processedEvents"
+      :key="event.id"
+      :category-name="event.category?.name || event.memo"
+      :time="`${formatTime(event.startTime)} - ${formatTime(event.endTime)}`"
+      :style="getEventStyle(event)"
+      @click="handleEventClick(event)"
+      class="cursor-pointer"
+    />
   </div>
 </template>
