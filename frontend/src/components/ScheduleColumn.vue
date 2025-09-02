@@ -7,7 +7,10 @@ const emit = defineEmits(['plan-click', 'actual-click'])
 
 // 親からeventsデータを受け取るようにPropsを定義
 const props = defineProps({
-  title: String,
+  title: {
+    type: String,
+    default: '',
+  },
   events: {
     type: Array,
     default: () => [],
@@ -95,13 +98,19 @@ const handleEventClick = (event) => {
 <template>
   <div class="relative h-full">
     <!-- カラムヘッダー -->
-    <div class="flex items-center justify-center h-16 bg-google-gray-50 border-b border-google-gray-200 sticky top-0 z-10">
+    <div
+      class="flex items-center justify-center h-16 bg-google-gray-50 border-b border-google-gray-200 sticky top-0 z-10"
+    >
       <h2 class="text-xl font-medium text-google-gray-800">{{ title }}</h2>
     </div>
-    
+
     <!-- 時間グリッド -->
-    <div v-for="n in 24" :key="n" class="h-12 pr-3 border-b border-google-gray-100 hover:bg-google-gray-50 transition-colors"></div>
-    
+    <div
+      v-for="n in 24"
+      :key="n"
+      class="h-12 pr-3 border-b border-google-gray-100 hover:bg-google-gray-50 transition-colors"
+    ></div>
+
     <!-- イベントブロック -->
     <EventBlock
       v-for="event in processedEvents"
@@ -109,8 +118,8 @@ const handleEventClick = (event) => {
       :category-name="event.category?.name || event.memo"
       :time="`${formatTime(event.startTime)} - ${formatTime(event.endTime)}`"
       :style="getEventStyle(event)"
-      @click="handleEventClick(event)"
       class="cursor-pointer"
+      @click="handleEventClick(event)"
     />
   </div>
 </template>

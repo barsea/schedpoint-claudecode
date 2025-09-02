@@ -54,21 +54,21 @@ const handleActualClick = (actual) => {
     </div>
 
     <!-- メインコンテンツ -->
-    <div class="flex flex-grow overflow-hidden">
+    <div class="flex flex-grow bg-white">
       <!-- タイムアクシス -->
-      <div class="w-[100px] bg-white border-r border-google-gray-200 shadow-sm">
+      <div class="w-[100px] bg-white border-r border-google-gray-200 shadow-sm overflow-auto">
         <TimeAxis />
       </div>
       
       <!-- カレンダーコンテンツ -->
       <div class="flex flex-grow">
         <!-- 予定列 -->
-        <div class="flex-1 bg-white border-r border-google-gray-200">
+        <div class="flex-1 bg-white border-r border-google-gray-200 overflow-auto">
           <ScheduleColumn title="予定" :events="planStore.plans" @plan-click="handlePlanClick" />
         </div>
         
         <!-- 実績列 -->
-        <div class="flex-1 bg-white">
+        <div class="flex-1 bg-white overflow-auto">
           <ScheduleColumn
             title="実績"
             :events="actualStore.actuals"
