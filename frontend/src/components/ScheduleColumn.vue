@@ -101,7 +101,7 @@ const handleEventClick = (event) => {
     <div
       class="flex items-center justify-center h-16 bg-google-gray-50 border-b border-google-gray-200 sticky top-0 z-10"
     >
-      <h2 class="text-xl font-medium text-google-gray-800">{{ title }}</h2>
+      <h2 class="text-2xl font-medium text-google-gray-800">{{ title }}</h2>
     </div>
 
     <!-- 時間グリッド -->

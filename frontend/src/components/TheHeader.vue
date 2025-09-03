@@ -56,24 +56,27 @@ const handleLogout = () => {
 <template>
   <div class="flex items-center justify-between h-full px-6 py-3 font-google">
     <div class="flex items-center">
-      <div class="text-2xl font-medium mr-8 text-google-gray-800">{{ planStore.formattedCurrentDate }}</div>
+      <div class="text-3xl font-bold mr-6 bg-gradient-to-r from-google-blue-600 to-google-blue-700 bg-clip-text text-transparent">
+        SchedPoint
+      </div>
+      <div class="text-3xl font-medium mr-8 text-google-gray-800">{{ planStore.formattedCurrentDate }}</div>
       <button
         @click="planStore.resetToToday()"
-        class="bg-google-blue-500 hover:bg-google-blue-600 text-white font-medium text-sm py-2 px-4 rounded-google mr-4 shadow-sm transition-colors"
+        class="bg-google-blue-500 hover:bg-google-blue-600 text-white font-medium text-base py-3 px-6 rounded-google mr-4 shadow-sm transition-colors"
       >
         今日
       </button>
       <div class="flex items-center bg-google-gray-100 rounded-google overflow-hidden mr-4">
         <button
           @click="planStore.changeDate(-1)"
-          class="hover:bg-google-gray-200 text-google-gray-700 font-medium py-2 px-3 transition-colors"
+          class="hover:bg-google-gray-200 text-google-gray-700 font-medium py-3 px-4 transition-colors"
         >
           ←
         </button>
         <div class="w-px h-8 bg-google-gray-300"></div>
         <button
           @click="planStore.changeDate(1)"
-          class="hover:bg-google-gray-200 text-google-gray-700 font-medium py-2 px-3 transition-colors"
+          class="hover:bg-google-gray-200 text-google-gray-700 font-medium py-3 px-4 transition-colors"
         >
           →
         </button>
@@ -102,7 +105,7 @@ const handleLogout = () => {
         <div class="relative" ref="createDropdown">
           <button
             @click.prevent="toggleCreateDropdown"
-            class="flex items-center bg-google-blue-500 hover:bg-google-blue-600 px-4 py-2 text-sm font-medium text-white rounded-google shadow-sm transition-colors"
+            class="flex items-center bg-google-blue-500 hover:bg-google-blue-600 px-6 py-3 text-base font-medium text-white rounded-google shadow-sm transition-colors"
           >
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
